@@ -1,0 +1,20 @@
+# Local state and generated artifacts
+logs/
+*.log
+tray.lock
+fatal.log
+
+# Local config holds this machine's game list; ship config.example.json instead
+config.json
+
+# Build output from launcher/build.ps1
+launcher/bin/
+*.exe
+*.pdb
+
+# Editor / OS noise
+.vs/
+.vscode/
+*.user
+Thumbs.db
+desktop.ini

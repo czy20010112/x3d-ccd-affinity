@@ -1,0 +1,36 @@
+{
+  "_readme": "X3D CCD Affinity Guard configuration. The daemon hot-reloads this file within ~2 seconds of saving.",
+  "_hardware": "CCD0 mask 0xFFFF = logical CPU 0-15, owns the 96 MB stacked 3D V-Cache. CCD1 mask 0xFFFF0000 = CPU 16-31, 32 MB L3 but higher clocks. Verify your own layout with: pwsh -File .\\X3D-CCDAffinity.ps1 -Status",
+  "pollSeconds": 2,
+  "retryAttempts": 6,
+  "retryDelayMs": 400,
+  "logRetainDays": 14,
+
+  "groups": [
+    {
+      "name": "ccd0-cache",
+      "mask": "0xFFFF",
+      "priority": null,
+      "enabled": true,
+      "comment": "Games that benefit from the 96 MB L3. Add exe file names (case-insensitive, must include .exe). priority: null | AboveNormal | High | RealTime",
+      "processes": [
+        "Cyberpunk2077.exe",
+        "b1-Win64-Shipping.exe",
+        "bf6.exe",
+        "helldivers2.exe",
+        "StarRail.exe",
+        "ZenlessZoneZero.exe",
+        "HYP.exe",
+        "HYPHelper.exe"
+      ]
+    },
+    {
+      "name": "ccd1-freq",
+      "mask": "0xFFFF0000",
+      "priority": null,
+      "enabled": true,
+      "comment": "Optional: titles that prefer raw clock speed over cache (competitive shooters, emulators). Usually left empty.",
+      "processes": []
+    }
+  ]
+}
